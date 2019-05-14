@@ -1,13 +1,13 @@
 language: erlang
-script: "make test"
 otp_release:
-  - 21.2
-  - 21.0
-  - 20.0
-  - 19.0
-  - 18.0
-  - 17.4
-  - 17.0
-  - R16B
-  - R15B03
-before_script: "sudo apt-get --yes --force-yes install libpam-runtime python-software-properties"
+  - 19.3
+  - 20.3.8
+  - 21.3
+notifications:
+  email:
+    - maxim@synrc.com
+script:
+  - "rebar get-deps clean compile"
+  - "curl -fsSL https://raw.github.com/synrc/mad/master/mad > mad"
+  - "chmod +x mad"
+  - "./mad dep com"
